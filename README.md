@@ -122,8 +122,6 @@ Results are written to `results/` as JSON files (e.g., `experiment1_main.json`).
 
 ## Notes for Code Reviewers
 
-- **`src_2/`** is the active codebase. `src/` (if present) is a frozen earlier version kept for reference only.
-- The Heston Oracle Delta (M1b) is intentionally an *oracle* — it uses true latent variance and true model parameters and therefore sets an upper bound for model-based hedging under Heston.
 - The QuantLib Heston pricer builds a grid on first run and caches it to `cache/heston_grid.pkl`. Subsequent runs load from cache (much faster).
 - All random seeds are fixed in `config.py` (`SimConfig.seed_train/val/test`). Results are deterministic given the same PyTorch/NumPy versions.
 - Training uses CPU by default. Pass `--device cuda` (if GPU is available) to accelerate MLP training.
